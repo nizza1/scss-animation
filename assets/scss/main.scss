@@ -1,0 +1,52 @@
+@mixin ball {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%; 
+    border: 1px solid black;
+    animation-iteration-count: infinite;
+    position: relative;
+    animation-name: animation;
+    animation-duration: 2s;
+    @keyframes animation {
+        0% {
+            left: 0px;
+        }
+
+        50% {
+            left: 400px;
+        }
+
+        100% {
+            left: 0px;
+        }
+    }
+}
+
+@mixin spizief ($animationDauer,$backgroundColor) {
+    animation-duration: $animationDauer;
+    background-color: $backgroundColor;
+}
+
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
+    width: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    .ball1, .ball2, .ball3 {
+        @include ball;
+    }
+    .ball1 {
+        @include spizief(1s,yellow);
+    }
+    .ball2 {
+        @include spizief(1.5s,lime);
+    }
+    .ball3 {
+        @include spizief(2s,orange);
+    }
+
+}
